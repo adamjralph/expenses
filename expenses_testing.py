@@ -20,28 +20,54 @@
 # based on total expenditure or by seting goals in particular categories
 
 def add_item():
-    name = input('Please enter item name: ')
-    return name
+#    name = input('Please enter item name: ')
+#    return name
+    return 'Apple'
 
 def add_price():
-    price = input('Please enter price: ')
-    return price
-    
+#    price = input('Please enter price: ')
+#    return price
+    return 10
+
 def add_category():
-    category = input('Please enter category: ')
-    return category
-
+#    category = input('Please enter category: ')
+#    return category
+    return 'Fruit'
+    
 def add_date():
-    date = input('Please enter date: ')
-    return date
-
+#    date = input('Please enter date: ')
+#    return date
+    return '12/10/20'    
+    
 def create_entry():
 
-    # create a tuple containing data derived from data entry funcions 
+#class CreateEntry():
+#    
+#    def __init__(self, item, price, category, date):
+#
+#        self.item = add_item()
+#        self.price = add_price()
+#        self.category = add_category()
+#        self.date = add_date()
+#
+#item = CreateEntry.item()
+#print(item)
+class Expense():
 
-    expense = (add_item(), add_price(), add_category(), add_date())
-    return print(type(expense))
+    def __init__(self, entry):
 
+        self.entry = entry
+
+    def print_item(self, entry):
+
+        return print(self.entry)
+
+new_item = Expense(create_entry())
+print(new_item.print_item)
+#
+
+        
+        
 create_entry()
 
 
