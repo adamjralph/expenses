@@ -45,5 +45,5 @@ class Expense:
 # new_item = Expense()
 
 expense1 = Expense.new()
-
+print(Expense.new())
 print(expense1)
