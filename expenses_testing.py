@@ -19,6 +19,8 @@
 # The program is able to exept an income and set a budget
 # based on total expenditure or by seting goals in particular categories
 
+import datetime
+
 def add_item():
 #    name = input('Please enter item name: ')
 #    return name
@@ -37,7 +39,10 @@ def add_category():
 def add_date():
 #    date = input('Please enter date: ')
 #    return date
-    return '12/10/20'    
+    return datetime.date.today
+    # from datetime import datetime
+    # mydatetime = datetime.date.today
+    # mydatetime.replace(year=1973)
     
 def create_entry():
 
