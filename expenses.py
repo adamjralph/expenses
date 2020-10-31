@@ -52,7 +52,7 @@ def create_entry():
 id_num = 0
 while True:
     
-    session = input("To enter a new expense please type 'e' or to quit type 'q'")
+    session = input("To enter a new expense please type 'e' or to quit type 'q': ")
     if session == 'q':
         break
     else:
@@ -68,11 +68,6 @@ while True:
 
     
 
-<<<<<<< HEAD
-expense1 = Expense.new()
-print(Expense.new())
-print(expense1)
-=======
 
 #class Expense:
 #    
@@ -102,4 +97,3 @@ print(expense1)
 #expense1 = Expense.new()
 #
 #print(expense1)
->>>>>>> re-write
