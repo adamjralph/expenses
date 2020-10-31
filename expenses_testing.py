@@ -19,60 +19,62 @@
 # The program is able to exept an income and set a budget
 # based on total expenditure or by seting goals in particular categories
 
+import datetime
+
 def add_item():
-    name = input('Please enter item name: ')
-    return name
+#    name = input('Please enter item name: ')
+#    return name
+    return 'Apple'
 
 def add_price():
-    price = input('Please enter price: ')
-    return price
-    
+#    price = input('Please enter price: ')
+#    return price
+    return 10
+
 def add_category():
-    category = input('Please enter category: ')
-    return category
-
+#    category = input('Please enter category: ')
+#    return category
+    return 'Fruit'
+    
 def add_date():
-    date = input('Please enter date: ')
-    return date
-
-data_dict = {}
+#    date = input('Please enter date: ')
+#    return date
+    return datetime.date.today
+    # from datetime import datetime
+    # mydatetime = datetime.date.today
+    # mydatetime.replace(year=1973)
+    
 def create_entry():
 
-    # create a tuple containing data derived from data entry funcions 
-    data_dict = {
-            'name':add_item(),
-            'price':add_price(),
-            'category':add_category(),
-            'date':add_date()
-    }
-    print(data_dict)
-#    expense = (add_item(), add_price(), add_category(), add_date())
-#    return expense 
+#class CreateEntry():
+#    
+#    def __init__(self, item, price, category, date):
+#
+#        self.item = add_item()
+#        self.price = add_price()
+#        self.category = add_category()
+#        self.date = add_date()
+#
+#item = CreateEntry.item()
+#print(item)
+class Expense():
 
-id_num = 0
-while True:
-    
-    session = input("To enter a new expense please type 'e' or to quit type 'q'")
-    if session == 'q':
-        break
-    else:
-        entry = create_entry()      
-        id_num += 1
+    def __init__(self, entry):
 
+        self.entry = entry
 
+    def print_item(self, entry):
 
-# def store_date(create):
+        return print(self.entry)
 
+new_item = Expense(create_entry())
+print(new_item.print_item)
+#
 
-    
+        
+        
+create_entry()
 
-    
-
-<<<<<<< HEAD
-expense1 = Expense.new()
-print(Expense.new())
-print(expense1)
-=======
 
 #class Expense:
 #    
@@ -102,4 +104,3 @@ print(expense1)
 #expense1 = Expense.new()
 #
 #print(expense1)
->>>>>>> re-write
