@@ -35,14 +35,38 @@ def add_date():
     date = input('Please enter date: ')
     return date
 
+data_dict = {}
 def create_entry():
 
     # create a tuple containing data derived from data entry funcions 
+    data_dict = {
+            'name':add_item(),
+            'price':add_price(),
+            'category':add_category(),
+            'date':add_date()
+    }
+    print(data_dict)
+#    expense = (add_item(), add_price(), add_category(), add_date())
+#    return expense 
 
-    expense = (add_item(), add_price(), add_category(), add_date())
-    return print(type(expense))
+id_num = 0
+while True:
+    
+    session = input("To enter a new expense please type 'e' or to quit type 'q'")
+    if session == 'q':
+        break
+    else:
+        entry = create_entry()      
+        id_num += 1
 
-create_entry()
+
+
+# def store_date(create):
+
+
+    
+
+    
 
 
 #class Expense:
