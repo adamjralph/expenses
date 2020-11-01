@@ -36,10 +36,11 @@ def add_date():
     return date
 
 data_dict = {}
-def create_entry():
+def create_entry(id_num):
 
     # create a tuple containing data derived from data entry funcions 
     data_dict = {
+            'id':id_num,
             'name':add_item(),
             'price':add_price(),
             'category':add_category(),
@@ -57,7 +58,7 @@ def session_on():
         if session == 'q':
             break
         else:
-            entry = create_entry()      
+            entry = create_entry(id_num)      
             id_num += 1
 
 session_on()
