@@ -18,6 +18,7 @@
 # 
 # The program is able to exept an income and set a budget
 # based on total expenditure or by seting goals in particular categories
+import datetime
 
 def add_item():
     name = input('Please enter item name: ')
@@ -32,13 +33,14 @@ def add_category():
     return category
 
 def add_date():
-    date = input('Please enter date: ')
-    return date
+    return datetime.date.today()
 
 data_dict = {}
 def create_entry(id_num):
 
-    # create a tuple containing data derived from data entry funcions 
+    # create a dictionary of lists
+#    date = 
+#    entry_list = [id_num, add_item(), add_price(), add_category(), date]
     data_dict = {
             'id':id_num,
             'name':add_item(),
