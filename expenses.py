@@ -20,7 +20,6 @@
 # based on total expenditure or by seting goals in particular categories
 from datetime import date
 import ast
-import json
 
 def add_item():
     name = input('Please enter item name: ')
@@ -39,30 +38,32 @@ def add_date():
 
 data_dict = {}
 
+def read_data(file_written):
 
-
-def read_data():
-
-    with open('expense_data.txt', 'r') as f:
-        data = f.read()
-    data_dict = ast.literal_eval(data)
-    print(data_dict)
-    print(type(data_dict))
-    return data_dict
+    if file_written == True:
+        with open('expense_data.txt', 'r') as f:
+            data = f.read()
+        data_dict = ast.literal_eval(data)
+        print(data_dict)
+        print(type(data_dict))
+        return data_dict
+    else:
+        print('Empty')
 
 def create_entry(id_num):
 
-    # create a dictionary of lists
     entry_list = [add_item(), add_price(), add_category(), add_date()]
     data_dict[id_num] = entry_list
     
+file_written = False
 def write_dict(data_dict):
 
     data_file = open('expense_data.txt', 'a')
     data_file.write(str(data_dict))
+    file_written = True
     print('Data written to file.')
     data_file.close()
-
+    return file_written
 
 def create_id(data_dict):
     for k in data_dict:
@@ -75,13 +76,15 @@ def session_on(id_num, data_dict):
 
         session = input("To enter a new expense please type 'e' or to quit type 'q': ")
         if session == 'q':
+            write_dict(data_dict)
+            print('Session ended. Goodbye!')
             break
         else:
             entry = create_entry(id_num)
             id_num += 1
             create_id(data_dict)
-            read_data()
-
+            read_data(file_written)
+read_data(file_written)
 session_on(id_num, data_dict)
 
 # def store_date(create):
