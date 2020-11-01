@@ -50,17 +50,19 @@ def read_data():
     print(type(data_dict))
     return data_dict
 
-
-
 def create_entry(id_num):
 
     # create a dictionary of lists
     entry_list = [add_item(), add_price(), add_category(), add_date()]
     data_dict[id_num] = entry_list
+    
+def write_dict(data_dict):
+
     data_file = open('expense_data.txt', 'a')
     data_file.write(str(data_dict))
-    print(str(data_dict))
+    print('Data written to file.')
     data_file.close()
+
 
 def create_id(data_dict):
     for k in data_dict:
