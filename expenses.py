@@ -21,6 +21,16 @@
 from datetime import date
 import ast
 
+def create_id(data_dict):
+    id_num = 0
+    if data_dict:
+        max_id = max(k for k, v in data_dict.items())
+        print(max_id)
+        id_num = max_id
+        return id_num
+    else:
+        return id_num
+
 def add_item():
     name = input('Please enter item name: ')
     return name
@@ -50,10 +60,11 @@ def read_data(file_written):
     else:
         print('Empty')
 
-def create_entry(create_id):
-
+def create_entry(create_id, data_dict):
+    
+    new_id = create_id(data_dict)
     entry_list = [add_item(), add_price(), add_category(), add_date()]
-    data_dict[create_id] = entry_list
+    data_dict[new_id + 1] = entry_list
     
 file_written = False
 def write_dict(data_dict):
@@ -65,31 +76,24 @@ def write_dict(data_dict):
     data_file.close()
     return file_written
 
-def create_id(data_dict):
-    max_id = max(k for k, v in data_dict.items())
-    print(max_id)
-    id_num = max_id
-    return id_num
         
 
-id_num = 0
-def session_on(id_num, data_dict):
+def session_on(create_id, data_dict):
 
+    new_id = create_id(data_dict)
     while True:
 
         session = input("To enter a new expense please type 'e' or to quit type 'q': ")
         if session == 'q':
             write_dict(data_dict)
-            create_id(data_dict)
             print('Session ended. Goodbye!')
             break
         else:
-            create_entry(id_num)
-            id_num += 1
+            create_entry(create_id, data_dict)
             #create_id(data_dict)
             read_data(file_written)
 read_data(file_written)
-session_on(id_num, data_dict)
+session_on(create_id, data_dict)
 
 # def store_date(create):
 
