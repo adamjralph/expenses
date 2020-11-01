@@ -1,4 +1,4 @@
-#
+
 # A program which enable the user to enter data to track expenses
 # 
 # An expense includes the following properties
