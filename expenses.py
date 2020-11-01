@@ -39,18 +39,11 @@ data_dict = {}
 def create_entry(id_num):
 
     # create a dictionary of lists
-#    date = 
-#    entry_list = [id_num, add_item(), add_price(), add_category(), date]
-    data_dict = {
-            'id':id_num,
-            'name':add_item(),
-            'price':add_price(),
-            'category':add_category(),
-            'date':add_date()
-            }
-    print(data_dict)
+    entry_list = [id_num, add_item(), add_price(), add_category(), add_date()]
+    data_dict[id_num] = entry_list
     data_file = open('expense_data.txt', 'a')
     data_file.write(str(data_dict)+'\n')
+    print(data_dict)
     data_file.close()
 #    expense = (add_item(), add_price(), add_category(), add_date())
 #    return expense 
