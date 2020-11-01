@@ -47,6 +47,9 @@ def create_entry(id_num):
             'date':add_date()
     }
     print(data_dict)
+    data_file = open('expense_data.txt', 'a')
+    data_file.write(str(data_dict)+'\n')
+    data_file.close()
 #    expense = (add_item(), add_price(), add_category(), add_date())
 #    return expense 
 
