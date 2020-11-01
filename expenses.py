@@ -50,10 +50,10 @@ def read_data(file_written):
     else:
         print('Empty')
 
-def create_entry(id_num):
+def create_entry(create_id):
 
     entry_list = [add_item(), add_price(), add_category(), add_date()]
-    data_dict[id_num] = entry_list
+    data_dict[create_id] = entry_list
     
 file_written = False
 def write_dict(data_dict):
@@ -66,8 +66,11 @@ def write_dict(data_dict):
     return file_written
 
 def create_id(data_dict):
-    for k in data_dict:
-        print(k)
+    max_id = max(k for k, v in data_dict.items())
+    print(max_id)
+    id_num = max_id
+    return id_num
+        
 
 id_num = 0
 def session_on(id_num, data_dict):
@@ -77,12 +80,13 @@ def session_on(id_num, data_dict):
         session = input("To enter a new expense please type 'e' or to quit type 'q': ")
         if session == 'q':
             write_dict(data_dict)
+            create_id(data_dict)
             print('Session ended. Goodbye!')
             break
         else:
-            entry = create_entry(id_num)
+            create_entry(id_num)
             id_num += 1
-            create_id(data_dict)
+            #create_id(data_dict)
             read_data(file_written)
 read_data(file_written)
 session_on(id_num, data_dict)
