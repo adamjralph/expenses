@@ -49,17 +49,18 @@ def create_entry():
 #    expense = (add_item(), add_price(), add_category(), add_date())
 #    return expense 
 
-id_num = 0
-while True:
+def session_on():
     
-    session = input("To enter a new expense please type 'e' or to quit type 'q': ")
-    if session == 'q':
-        break
-    else:
-        entry = create_entry()      
-        id_num += 1
+    id_num = 0
+    while True:
+        session = input("To enter a new expense please type 'e' or to quit type 'q': ")
+        if session == 'q':
+            break
+        else:
+            entry = create_entry()      
+            id_num += 1
 
-
+session_on()
 
 # def store_date(create):
 
