@@ -18,7 +18,7 @@
 # 
 # The program is able to exept an income and set a budget
 # based on total expenditure or by seting goals in particular categories
-import datetime
+from datetime import date
 
 def add_item():
     name = input('Please enter item name: ')
@@ -33,7 +33,7 @@ def add_category():
     return category
 
 def add_date():
-    return datetime.date.today()
+    return date.today().strftime('%Y-%m-%d')
 
 data_dict = {}
 def create_entry(id_num):
@@ -47,7 +47,7 @@ def create_entry(id_num):
             'price':add_price(),
             'category':add_category(),
             'date':add_date()
-    }
+            }
     print(data_dict)
     data_file = open('expense_data.txt', 'a')
     data_file.write(str(data_dict)+'\n')
