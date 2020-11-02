@@ -54,8 +54,13 @@ def add_price():
     
 
 def add_category():
-    category = input('Please enter category: ')
-    return category
+    
+    while True:
+        category = input('Please enter category: ')
+        if len(category) > 10:
+            print('Category name must not be longer than 10 characters. \nPlease try again.')
+        else: 
+            return category
 
 def add_date():
     return date.today().strftime('%Y-%m-%d')
