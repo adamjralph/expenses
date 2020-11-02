@@ -32,8 +32,14 @@ def create_id(data):
         return id_num
 
 def add_item():
-    name = input('Please enter item name: ')
-    return name
+        
+    while True:
+        
+        name = str(input('Please enter item name: '))
+        if len(name) > 10:
+            print('Item name must not be longer than 10 characters. \nPlease try again.')
+        else:
+            return name
 
 def add_price():
     price = input('Please enter price: ')
