@@ -10,6 +10,10 @@ def read_data():
         print(data_dict)
         print(type(data_dict))
         return data_dict
+    except FileNotFoundError:
+        open('expense_data.txt', 'w')
+        data_dict = {}
+        return data_dict
     except SyntaxError:
         print('Dictionary is empty!')
         data_dict = {}
