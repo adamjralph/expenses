@@ -1,6 +1,22 @@
 from datetime import date
 import ast
 
+def read_data():
+
+    try:
+        with open('expense_data.txt', 'r') as f:
+            data = f.read()
+        data_dict = ast.literal_eval(data)
+        print(data_dict)
+        print(type(data_dict))
+        return data_dict
+    except SyntaxError:
+        print('Dictionary is empty!')
+        data_dict = {}
+        print(data_dict)
+        print(type(data_dict))
+        return data_dict
+
 def create_id(data):
     id_num = 0
     if data:
@@ -25,24 +41,6 @@ def add_category():
 
 def add_date():
     return date.today().strftime('%Y-%m-%d')
-
-# data_dict = {}
-
-def read_data():
-
-    try:
-        with open('expense_data.txt', 'r') as f:
-            data = f.read()
-        data_dict = ast.literal_eval(data)
-        print(data_dict)
-        print(type(data_dict))
-        return data_dict
-    except SyntaxError:
-        print('Dictionary is empty!')
-        data_dict = {}
-        print(data_dict)
-        print(type(data_dict))
-        return data_dict
 
 def create_entry(data):
     
@@ -71,40 +69,3 @@ def session_on(data):
 
 data = read_data()
 session_on(data)
-
-# def store_date(create):
-
-
-
-
-
-
-
-#class Expense:
-#
-#    def __init__(self, name, price, category, date):
-#
-#        self.name = name
-#        self.price = price
-#        self.category = category
-#        self.date = date
-#
-#    def new():
-#
-#        name = input('Please enter item name: ')
-#        price = input('Please enter price: ')
-#        category = input('Please enter category: ')
-#        date = input('Please enter date: ')
-#
-#    def __str__(self):
-#
-#        print(f'Item: {self.name}\nDebit: {self.price}\nCategory: {self.category}\nDate: {self.date}')
-#
-## item1 = Expense('Electricity', '100', 'Bill', '01/01/2020')
-#
-## print(item1)
-## new_item = Expense()
-#
-#expense1 = Expense.new()
-#
-#print(expense1)
