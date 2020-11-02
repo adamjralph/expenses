@@ -83,12 +83,16 @@ def session_on(data):
     while True:
 
         session = input("To enter a new expense please type 'e' or to quit type 'q': ")
-        if session == 'q':
+        if session.lower() == 'q':
             write_dict(data)
             print('Session ended. Goodbye!')
             break
+        elif session.lower() == 'e':
+            create_entry(data) 
         else:
-            create_entry(data)
+            print("Please enter 'e' or 'q'")
+        
+               
 
 data = read_data()
 session_on(data)
