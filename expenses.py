@@ -22,6 +22,7 @@ def read_data():
         return data_dict
 
 def create_id(data):
+
     id_num = 0
     if data:
         max_id = max(k for k, v in data.items())
@@ -42,8 +43,15 @@ def add_item():
             return name
 
 def add_price():
-    price = input('Please enter price: ')
-    return price
+    
+    while True:
+
+        try: 
+            price = float(input('Please enter price: '))
+            return price
+        except:
+            print('Please enter a numberical value.')
+    
 
 def add_category():
     category = input('Please enter category: ')
