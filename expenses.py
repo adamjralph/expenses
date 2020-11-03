@@ -67,53 +67,36 @@ def add_date():
     while True:
         choose_date = input("Type 't' for today's date or 'd' to enter date manually.")
         if choose_date.lower() == 't':
+            print_date = date.today().strftime('%Y-%m-%d')
+            print(print_date)
+            print(type(print_date))
             return date.today().strftime('%Y-%m-%d')
         elif choose_date.lower() == 'd':
-            year = input('Please enter year, yyyy: ')
-            while True:
-                if len(year) == 4:
-                    add_year = year
-                    continue 
-                else:
-                    try:
-                        len(year) == 4
-                    except ValueError:
-                        print('Please enter 4 digits.')
-                    except TypeError:
-                        print('Please enter 4 digits.')
-                    else:
-                        print('Please enter 4 digits.')
-            
-            month = input('Please enter month, mm: ')
-            while True:
-                if len(month) == 2:
-                    add_month = month 
-                else:
-                    try:
-                        len(month) == 2
-                    except ValueError:
-                        print('Please enter 2 digits.')
-                    except TypeError:
-                        print('Please enter 2 digits.')
-                    except:
-                        print('Please enter 2 digits.')
-                     
-            day = input('Please enter month, mm: ')
-            while True:
-                if len(year) == 2:
-                    add_day = day 
-                else:
-                    try:
-                        len(int(day)) == 2
-                    except ValueError:
-                        print('Please enter 2 digits.')
-                    except TypeError:
-                        print('Please enter 2 digits')
-                
+            year = date_item('Year', 4, 'four') 
+            month = date_item('Month', 2, 'two')
+            day = date_item('Day', 2, 'two')
+            return f'{year}-{month}-{day}'
+
         else:
             print("Please enter 't' or 'd'")
             
+def date_item(ymd, length, str_len):
+    
+    while True:
 
+        enter_ymd = input(f'Please enter {ymd}:')
+        try:
+            int(enter_ymd)
+        except ValueError:
+            print(f'Please enter {str_len}  digits only.')
+        
+        if len(enter_ymd) != length:
+            print(f'{ymd} must be {str_len} digits.')
+        else:
+            add_ymd = enter_ymd
+            print(add_ymd)
+            print(type(add_ymd))
+            return add_ymd
 
 def create_entry(data):
     
