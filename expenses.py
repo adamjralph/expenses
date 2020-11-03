@@ -18,7 +18,7 @@ def read_data():
         return data_dict
 
 def create_id(data):
-
+    # Do i need the id_num or can I just use max_id as is?
     id_num = 0
     if data:
         max_id = max(k for k, v in data.items())
