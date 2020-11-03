@@ -7,8 +7,6 @@ def read_data():
         with open('expense_data.txt', 'r') as f:
             data = f.read()
         data_dict = ast.literal_eval(data)
-        print(data_dict)
-        print(type(data_dict))
         return data_dict
     except FileNotFoundError:
         open('expense_data.txt', 'w')
@@ -17,8 +15,6 @@ def read_data():
     except SyntaxError:
         print('Dictionary is empty!')
         data_dict = {}
-        print(data_dict)
-        print(type(data_dict))
         return data_dict
 
 def create_id(data):
@@ -26,7 +22,6 @@ def create_id(data):
     id_num = 0
     if data:
         max_id = max(k for k, v in data.items())
-        print(max_id)
         id_num = max_id
         return id_num
     else:
@@ -63,40 +58,32 @@ def add_category():
             return category
 
 def add_date():
+    
     print('Date of purchase.')
     while True:
-        choose_date = input("Type 't' for today's date or 'd' to enter date manually.")
+        choose_date = input("Type 't' for today's date or 'd' to enter date manually. ")
         if choose_date.lower() == 't':
-            print_date = date.today().strftime('%Y-%m-%d')
-            print(print_date)
-            print(type(print_date))
             return date.today().strftime('%Y-%m-%d')
         elif choose_date.lower() == 'd':
             year = date_item('Year', 4, 'four') 
             month = date_item('Month', 2, 'two')
             day = date_item('Day', 2, 'two')
             return f'{year}-{month}-{day}'
-
         else:
             print("Please enter 't' or 'd'")
             
 def date_item(ymd, length, str_len):
     
     while True:
-
-        enter_ymd = input(f'Please enter {ymd}:')
+        enter_ymd = input(f'Please enter {ymd}: ')
         try:
             int(enter_ymd)
         except ValueError:
             print(f'Please enter {str_len}  digits only.')
-        
         if len(enter_ymd) != length:
             print(f'{ymd} must be {str_len} digits.')
         else:
-            add_ymd = enter_ymd
-            print(add_ymd)
-            print(type(add_ymd))
-            return add_ymd
+            return enter_ymd
 
 def create_entry(data):
     
