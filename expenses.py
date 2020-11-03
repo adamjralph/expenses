@@ -63,7 +63,57 @@ def add_category():
             return category
 
 def add_date():
-    return date.today().strftime('%Y-%m-%d')
+    print('Date of purchase.')
+    while True:
+        choose_date = input("Type 't' for today's date or 'd' to enter date manually.")
+        if choose_date.lower() == 't':
+            return date.today().strftime('%Y-%m-%d')
+        elif choose_date.lower() == 'd':
+            year = input('Please enter year, yyyy: ')
+            while True:
+                if len(year) == 4:
+                    add_year = year
+                    continue 
+                else:
+                    try:
+                        len(year) == 4
+                    except ValueError:
+                        print('Please enter 4 digits.')
+                    except TypeError:
+                        print('Please enter 4 digits.')
+                    else:
+                        print('Please enter 4 digits.')
+            
+            month = input('Please enter month, mm: ')
+            while True:
+                if len(month) == 2:
+                    add_month = month 
+                else:
+                    try:
+                        len(month) == 2
+                    except ValueError:
+                        print('Please enter 2 digits.')
+                    except TypeError:
+                        print('Please enter 2 digits.')
+                    except:
+                        print('Please enter 2 digits.')
+                     
+            day = input('Please enter month, mm: ')
+            while True:
+                if len(year) == 2:
+                    add_day = day 
+                else:
+                    try:
+                        len(int(day)) == 2
+                    except ValueError:
+                        print('Please enter 2 digits.')
+                    except TypeError:
+                        print('Please enter 2 digits')
+                
+        else:
+            print("Please enter 't' or 'd'")
+            
+
 
 def create_entry(data):
     
@@ -92,7 +142,5 @@ def session_on(data):
         else:
             print("Please enter 'e' or 'q'")
         
-               
-
 data = read_data()
 session_on(data)
