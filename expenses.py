@@ -30,7 +30,6 @@ def create_id(data):
 def add_item():
         
     while True:
-        
         name = str(input('Please enter item name: '))
         if len(name) > 10:
             print('Item name must not be longer than 10 characters. \nPlease try again.')
@@ -40,7 +39,6 @@ def add_item():
 def add_price():
     
     while True:
-
         try: 
             price = float(input('Please enter price: '))
             return price
@@ -101,7 +99,6 @@ def write_dict(data_dict):
 def session_on(data):
     
     while True:
-
         session = input("To enter a new expense please type 'e' or to quit type 'q': ")
         if session.lower() == 'q':
             write_dict(data)
