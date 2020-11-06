@@ -24,6 +24,7 @@ def request_data(data):
         if show.lower() == 'y':
             return data
         elif show.lower() == 'n':
+            session_on(data) 
             break
         else:
             print('Please enter y/n')
@@ -109,7 +110,7 @@ def write_dict(data_dict):
 
 def session_on(data):
 
-    request_data(data) 
+    # request_data() 
     
     while True:
         session = input("To enter a new expense please type 'e' or to quit type 'q': ")
@@ -121,6 +122,6 @@ def session_on(data):
             create_entry(data) 
         else:
             print("Please enter 'e' or 'q'")
-        
+
 data = read_data()
-session_on(data)
+request_data(data)        
