@@ -21,9 +21,9 @@ def request_data(data):
 
     show = input('Do you wish to read the current data? y/n? ')
     while True:
-        if show.lower() == y:
+        if show.lower() == 'y':
             return data
-        elif show.lower() == n:
+        elif show.lower() == 'n':
             break
         else:
             print('Please enter y/n')
