@@ -17,6 +17,17 @@ def read_data():
         data_dict = {}
         return data_dict
 
+def request_data(data):
+
+    show = input('Do you wish to read the current data? y/n? ')
+    while True:
+        if show.lower() == y:
+            return data
+        elif show.lower() == n:
+            break
+        else:
+            print('Please enter y/n')
+
 def create_id(data):
     # Do i need the id_num or can I just use max_id as is?
     id_num = 0
@@ -97,6 +108,8 @@ def write_dict(data_dict):
     data_file.close()
 
 def session_on(data):
+
+    
     
     while True:
         session = input("To enter a new expense please type 'e' or to quit type 'q': ")
