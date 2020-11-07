@@ -1,28 +1,29 @@
 from datetime import date
-import ast
+import csv
 
 def read_data():
 
     try:
-        with open('expense_data.txt', 'r') as f:
-            data = f.read()
-        data_dict = ast.literal_eval(data)
-        return data_dict
+        open_data = open('datafile.csv', 'r')
+        data_csv = csv.reader(open_data) 
+        read_lines = list(data_csv)
+        open_data.close()
+        return read_lines
     except FileNotFoundError:
-        open('expense_data.txt', 'w')
-        data_dict = {}
-        return data_dict
+        open('datafile.csv', 'w')
+        data_csv = []
+        return data_csv
     except SyntaxError:
-        print('Dictionary is empty!')
-        data_dict = {}
-        return data_dict
+        print('File is empty!')
+        data_csv = [] 
+        return data_csv
 
 def request_data(data):
 
     while True:
         show = input('Do you wish to read the current data? y/n? ')
         if show.lower() == 'y':
-            return data
+            return print(data)
         elif show.lower() == 'n':
             session_on(data) 
             break
@@ -124,4 +125,16 @@ def session_on(data):
             print("Please enter 'e' or 'q'")
 
 data = read_data()
+#data_lines = list(data)
+print(data)
+
+file_to_write = open('datafile.csv','w',newline='')
+csv_writer = csv.writer(file_to_write,delimiter=',')
+csv_writer.writerow(['Id','Item','Price','Category','Date'])
+csv_writer.writerows([['01','Thingy','10','Thing','12/3/20']])
+
+file_to_write.close()
+
+
+
 request_data(data)        
