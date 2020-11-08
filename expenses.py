@@ -1,3 +1,5 @@
+import pandas as pd
+#import numpy as np
 from datetime import date
 import csv
 
@@ -20,12 +22,13 @@ def read_data():
 
 def request_data(data):
 
+    data = read_data()
     while True:
         show = input('Do you wish to read the current data? y/n? ')
         if show.lower() == 'y':
-            break 
+            show_data = pd_data(data)
+            return print(show_data)
         elif show.lower() == 'n':
-            session_on(data) 
             break
         else:
             print('Please enter y/n')
@@ -34,13 +37,10 @@ def create_id(data):
     # Do i need the id_num or can I just use max_id as is?
     id_num = 0
     length = len(data)
-    print(len(data))
     id_list = []
-    print('Inside create_id')
     if length >= 2:
         for line in data:
             num = line[0]
-            print(num)
             id_list.append(num)
             id_list[0] = 0
         for item in id_list:
@@ -110,14 +110,11 @@ def date_item(ymd, length, str_len):
             return enter_ymd
 
 def create_entry(data):
-    print(len(data)) 
+
     if len(data) <= 1:
-        print('List empty!')
         new_id = 1
     else:
-        print('List not empty!')
         new_id = create_id(data)
-        print('New id=', new_id)
     entry_list = [new_id, add_item(), add_price(), add_category(), add_date()]
     write_file(entry_list)
 
@@ -125,15 +122,12 @@ def write_file(entry_list):
 
     data = read_data()
     if len(data) == 0:
-        print('Inside write_file function', entry_list)
         file_to_write = open('datafile.csv','w',newline='')
         csv_writer = csv.writer(file_to_write,delimiter=',')
         csv_writer.writerow(['Id','Item','Price','Category','Date'])
-        print(entry_list,'After add columns')
         csv_writer.writerows([entry_list])
         file_to_write.close() 
     else:
-        print('Append')
         file_to_write = open('datafile.csv','a',newline='')
         csv_writer = csv.writer(file_to_write)
         csv_writer.writerows([entry_list])
@@ -144,6 +138,7 @@ def session_on(data):
     while True:
         session = input("To enter a new expense please type 'e' or to quit type 'q': ")
         if session.lower() == 'q':
+            request_data(data)
             print('Session ended. Goodbye!')
             break
         elif session.lower() == 'e':
@@ -152,8 +147,14 @@ def session_on(data):
         else:
             print("Please enter 'e' or 'q'")
 
+def pd_data(data):
+
+    df = pd.DataFrame(data)
+    return df
+
 data = read_data()
-session_on(data)
 request_data(data)       
+session_on(data)
+
 
 

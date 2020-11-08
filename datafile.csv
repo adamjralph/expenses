@@ -1,5 +1,6 @@
 Id,Item,Price,Category,Date
 1,fish,6.0,food,2020-11-08
-2,door,700.0,open,2020-11-08
-3,book,6.0,reading,2020-11-08
-4,goo,5.0,slop,2020-11-08
+2,horse,6.0,friend,2020-11-08
+3,hat,8.0,clothing,2020-11-08
+4,goldfish,7.0,pet,2020-11-08
+5,coffee,8.0,drink,2020-11-08
