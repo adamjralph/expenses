@@ -1,2 +1,2 @@
 Id,Item,Price,Category,Date
-01,Thingy,10,Thing,12/3/20
+"['Id', 'Item', 'Price', 'Category', 'Date']","['1', '\x1b:q', '5.0', 'f', '2020-11-08']"

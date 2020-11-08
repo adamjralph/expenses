@@ -33,12 +33,24 @@ def request_data(data):
 def create_id(data):
     # Do i need the id_num or can I just use max_id as is?
     id_num = 0
-    if data:
-        max_id = max(k for k, v in data.items())
-        id_num = max_id
+    length = len(data)
+    index = 1
+    id_list = []
+    #return data[1][0]
+    if length > 1:
+        for line in data:
+            num = line[0]
+            id_list.append(num)
+            id_list[0] = 0
+        for item in id_list:
+            list_num = int(item)
+            if list_num > id_num:
+                id_num = list_num 
+            else:
+                continue
         return id_num
     else:
-        return id_num
+        return id_num + 1
 
 def add_item():
         
@@ -99,15 +111,17 @@ def date_item(ymd, length, str_len):
 def create_entry(data):
     
     new_id = create_id(data)
-    entry_list = [add_item(), add_price(), add_category(), add_date()]
-    data[new_id + 1] = entry_list
-    
-def write_dict(data_dict):
+    entry_list = [new_id, add_item(), add_price(), add_category(), add_date()]
+    return entry_list 
 
-    data_file = open('expense_data.txt', 'w')
-    data_file.write(str(data_dict))
+def write_file(data):
+
+    file_to_write = open('datafile.csv','w',newline='')
+    csv_writer = csv.writer(file_to_write,delimiter=',')
+    csv_writer.writerow(['Id','Item','Price','Category','Date'])
+    csv_writer.writerow(data)
     print('Data written to file.')
-    data_file.close()
+    file_to_write.close()
 
 def session_on(data):
 
@@ -116,25 +130,29 @@ def session_on(data):
     while True:
         session = input("To enter a new expense please type 'e' or to quit type 'q': ")
         if session.lower() == 'q':
-            write_dict(data)
+            write_file(data)
             print('Session ended. Goodbye!')
             break
         elif session.lower() == 'e':
-            create_entry(data) 
+            create_entry(data)
         else:
             print("Please enter 'e' or 'q'")
 
+
+#data = read_data()
+#file_to_write = open('datafile.csv','w',newline='')
+#csv_writer = csv.writer(file_to_write,delimiter=',')
+#entry = create_entry(data)
+#csv_writer.writerow(entry)
+#csv_writer.writerow(['Id','Item','Price','Category','Date'])
+#csv_writer.writerows([['01','Thingy','10','Thing','20/11/6']])
+#csv_writer.writerows([['02','Sponge','5','Household','20/11/7']])
+#csv_writer.writerows([['03','Hat','9','Clothing','20/11/8']])
+
+#file_to_write.close()
+
 data = read_data()
-#data_lines = list(data)
-print(data)
-
-file_to_write = open('datafile.csv','w',newline='')
-csv_writer = csv.writer(file_to_write,delimiter=',')
-csv_writer.writerow(['Id','Item','Price','Category','Date'])
-csv_writer.writerows([['01','Thingy','10','Thing','12/3/20']])
-
-file_to_write.close()
+session_on(data)
+request_data(data)       
 
 
-
-request_data(data)        

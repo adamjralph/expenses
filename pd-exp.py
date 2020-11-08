@@ -4,6 +4,7 @@ from expenses import data
 
 # imported_data = read_data()
 # df = pd.DataFrame(data, index=['Item:','Price:','Category:','Date:'])
-df = pd.read_csv('datafile.csv')
+df = pd.DataFrame(data)
+#df.set_index('Id',inplace=True)
 print(df)
 
