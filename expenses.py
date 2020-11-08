@@ -11,11 +11,11 @@ def read_data():
         return read_lines
     except FileNotFoundError:
         open('datafile.csv', 'w')
-        data_csv = []
+        #data_csv = []
         return data_csv
     except SyntaxError:
         print('File is empty!')
-        data_csv = [] 
+        #data_csv = [] 
         return data_csv
 
 def request_data(data):
@@ -34,10 +34,9 @@ def create_id(data):
     # Do i need the id_num or can I just use max_id as is?
     id_num = 0
     length = len(data)
-    index = 1
     id_list = []
-    #return data[1][0]
-    if length > 1:
+    print(data)
+    if length > 2:
         for line in data:
             num = line[0]
             id_list.append(num)
@@ -109,31 +108,43 @@ def date_item(ymd, length, str_len):
             return enter_ymd
 
 def create_entry(data):
-    
-    new_id = create_id(data)
+    print(len(data)) 
+    if len(data) <= 1:
+        print('List empty!')
+        new_id = 1
+    else:
+        print('List not empty!')
+        new_id = create_id(data)
     entry_list = [new_id, add_item(), add_price(), add_category(), add_date()]
-    return entry_list 
+    write_file(entry_list)
 
-def write_file(data):
+def write_file(entry_list):
 
-    file_to_write = open('datafile.csv','w',newline='')
-    csv_writer = csv.writer(file_to_write,delimiter=',')
-    csv_writer.writerow(['Id','Item','Price','Category','Date'])
-    csv_writer.writerow(data)
-    print('Data written to file.')
-    file_to_write.close()
+    data = read_data()
+    if len(data) == 0:
+        print('Inside write_file function', entry_list)
+        file_to_write = open('datafile.csv','w',newline='')
+        csv_writer = csv.writer(file_to_write,delimiter=',')
+        csv_writer.writerow(['Id','Item','Price','Category','Date'])
+        print(entry_list,'After add columns')
+        csv_writer.writerows([entry_list])
+        file_to_write.close() 
+    else:
+        print('Append')
+        file_to_write = open('datafile.csv','a',newline='')
+        csv_writer = csv.writer(file_to_write)
+        csv_writer.writerows([entry_list])
+        file_to_write.close()
 
 def session_on(data):
 
-    # request_data() 
-    
     while True:
         session = input("To enter a new expense please type 'e' or to quit type 'q': ")
         if session.lower() == 'q':
-            write_file(data)
             print('Session ended. Goodbye!')
             break
         elif session.lower() == 'e':
+            data = read_data()
             create_entry(data)
         else:
             print("Please enter 'e' or 'q'")
