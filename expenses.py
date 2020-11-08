@@ -34,11 +34,13 @@ def create_id(data):
     # Do i need the id_num or can I just use max_id as is?
     id_num = 0
     length = len(data)
+    print(len(data))
     id_list = []
-    print(data)
-    if length > 2:
+    print('Inside create_id')
+    if length >= 2:
         for line in data:
             num = line[0]
+            print(num)
             id_list.append(num)
             id_list[0] = 0
         for item in id_list:
@@ -47,7 +49,7 @@ def create_id(data):
                 id_num = list_num 
             else:
                 continue
-        return id_num
+        return id_num + 1
     else:
         return id_num + 1
 
@@ -115,6 +117,7 @@ def create_entry(data):
     else:
         print('List not empty!')
         new_id = create_id(data)
+        print('New id=', new_id)
     entry_list = [new_id, add_item(), add_price(), add_category(), add_date()]
     write_file(entry_list)
 
