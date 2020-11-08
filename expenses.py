@@ -23,7 +23,7 @@ def request_data(data):
     while True:
         show = input('Do you wish to read the current data? y/n? ')
         if show.lower() == 'y':
-            return print(data)
+            break 
         elif show.lower() == 'n':
             session_on(data) 
             break
@@ -151,19 +151,6 @@ def session_on(data):
             create_entry(data)
         else:
             print("Please enter 'e' or 'q'")
-
-
-#data = read_data()
-#file_to_write = open('datafile.csv','w',newline='')
-#csv_writer = csv.writer(file_to_write,delimiter=',')
-#entry = create_entry(data)
-#csv_writer.writerow(entry)
-#csv_writer.writerow(['Id','Item','Price','Category','Date'])
-#csv_writer.writerows([['01','Thingy','10','Thing','20/11/6']])
-#csv_writer.writerows([['02','Sponge','5','Household','20/11/7']])
-#csv_writer.writerows([['03','Hat','9','Clothing','20/11/8']])
-
-#file_to_write.close()
 
 data = read_data()
 session_on(data)
