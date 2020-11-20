@@ -13,11 +13,11 @@ def read_data():
         return read_lines
     except FileNotFoundError:
         open('datafile.csv', 'w')
-        #data_csv = []
+        data_csv = []
         return data_csv
     except SyntaxError:
         print('File is empty!')
-        #data_csv = [] 
+        data_csv = [] 
         return data_csv
 
 def request_data(data):
