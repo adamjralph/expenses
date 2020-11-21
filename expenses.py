@@ -34,7 +34,7 @@ def request_data(data):
             print('Please enter y/n')
 
 def create_id(data):
-    # Do i need the id_num or can I just use max_id as is?
+
     id_num = 0
     length = len(data)
     id_list = []
