@@ -2,3 +2,9 @@ Id,Item,Price,Category,Date
 1,shoe,5.0,clothing,2020-11-21
 2,fish,6.0,food,2020-11-21
 3,boat,6000.0,life,2020-11-21
+4,hat,8.0,clothing,2020-11-21
+5,starfish,88.0,food,2020-11-21
+6,boot,66.0,clothing,2020-11-21
+7,hammer,91.0,household,2020-05-07
+8,brick,77.0,household,2020-11-21
+9,gravel,222.0,household,2020-03-21

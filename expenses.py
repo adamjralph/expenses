@@ -152,9 +152,11 @@ def pd_data(data):
     df = pd.DataFrame(data)
     return df
 
-data = read_data()
-request_data(data)       
-session_on(data)
+if '__name__' == '__main__':
+    
+    data = read_data()
+    request_data(data)       
+    session_on(data)
 
 
 
